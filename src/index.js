@@ -1,11 +1,12 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {SplashScreen} from './screens/SplashSreen';
+import Login from './screens/SplashSreen/Login';
 
-export const App = () => {
-  return (
-    <View>
-      <SplashScreen />
-    </View>
-  );
-};
+const Routes = createAppContainer(
+  createSwitchNavigator({
+    SplashScreen: SplashScreen,
+    Login: Login,
+  }),
+);
+
+export default Routes;

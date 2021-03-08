@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, Animated, Text, ImageBackground} from 'react-native';
+import {Animated, ImageBackground} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {Container, Box, BoxTitle, Title} from './styles';
 
-export const SplashScreen = () => {
+export const SplashScreen = ({navigation}) => {
   const backgroundImage = '../../../assets/images/backgroundCat.png';
   const [iconPawAnimated] = useState(new Animated.Value(0));
   const [iconUserAnimated] = useState(new Animated.Value(0));
@@ -27,7 +27,11 @@ export const SplashScreen = () => {
     setTimeout(() => {
       setTitle(true);
     }, 1500);
-  });
+    setTimeout(() => {
+      navigation.navigate('Login');
+      return () => setTitle(false);
+    }, 3000);
+  }, []);
 
   return (
     <ImageBackground
